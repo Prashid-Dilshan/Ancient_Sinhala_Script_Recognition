@@ -102,3 +102,51 @@ dropArea.addEventListener("drop", function (event) {
     }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("recognitionForm");
+
+    const button = document.getElementById("predictButton");
+
+    const loadingContainer =
+        document.getElementById("loadingContainer");
+
+
+    if (!form || !button || !loadingContainer) {
+        return;
+    }
+
+
+    form.addEventListener("submit", function () {
+
+        /* Show loading animation */
+
+        loadingContainer.style.display = "block";
+
+
+        /* Change button text */
+
+        button.innerHTML = "Analyzing...";
+
+
+        /* Disable button */
+
+        button.disabled = true;
+
+        button.classList.add("loading");
+
+    });
+
+});

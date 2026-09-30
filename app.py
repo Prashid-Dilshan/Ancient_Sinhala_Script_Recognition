@@ -32,7 +32,6 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 # Upload Validation Settings
 # ==========================================================
 
-# Allowed image extensions
 ALLOWED_EXTENSIONS = {
     "jpg",
     "jpeg",
@@ -40,11 +39,17 @@ ALLOWED_EXTENSIONS = {
     "webp"
 }
 
-
 # Maximum upload size = 5 MB
 MAX_FILE_SIZE = 5 * 1024 * 1024
 
 app.config["MAX_CONTENT_LENGTH"] = MAX_FILE_SIZE
+
+
+# ==========================================================
+# Low Confidence Settings
+# ==========================================================
+
+LOW_CONFIDENCE_THRESHOLD = 70.0
 
 
 # ==========================================================
@@ -84,6 +89,10 @@ CLASS_NAMES = [
 ]
 
 
+
+
+
+
 # ==========================================================
 # Initialize Database
 # ==========================================================
@@ -95,7 +104,6 @@ def init_database():
     )
 
     cursor = connection.cursor()
-
 
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS predictions (
@@ -115,7 +123,6 @@ def init_database():
         )
     """)
 
-
     connection.commit()
 
     connection.close()
@@ -130,22 +137,18 @@ def preprocess_image(image):
     # Convert image to grayscale
     image = image.convert("L")
 
-
     # Resize image to 64 x 64
     image = image.resize(
         (64, 64)
     )
-
 
     # Convert image to NumPy array
     image = np.array(
         image
     )
 
-
     # Normalize pixel values
     image = image / 255.0
-
 
     # Reshape for CNN
     image = image.reshape(
@@ -154,7 +157,6 @@ def preprocess_image(image):
         64,
         1
     )
-
 
     return image
 
@@ -169,12 +171,10 @@ def allowed_file(filename):
 
         return False
 
-
     extension = filename.rsplit(
         ".",
         1
     )[1].lower()
-
 
     return extension in ALLOWED_EXTENSIONS
 
@@ -212,7 +212,6 @@ def recognize():
     methods=["POST"]
 )
 def predict():
-
 
     # ======================================================
     # Check Whether Image Was Uploaded
@@ -299,7 +298,6 @@ def predict():
         # Verify image integrity
         image.verify()
 
-
     except Exception:
 
         return render_template(
@@ -316,13 +314,11 @@ def predict():
 
     file.seek(0)
 
-
     try:
 
         image = Image.open(file)
 
         image.load()
-
 
     except Exception:
 
@@ -375,7 +371,6 @@ def predict():
             image_path
         )
 
-
     except Exception:
 
         return render_template(
@@ -396,14 +391,12 @@ def predict():
             image
         )
 
-
     except Exception:
 
         # Delete uploaded image
         if os.path.exists(image_path):
 
             os.remove(image_path)
-
 
         return render_template(
             "recognize.html",
@@ -424,14 +417,12 @@ def predict():
             verbose=0
         )
 
-
     except Exception:
 
         # Delete uploaded image
         if os.path.exists(image_path):
 
             os.remove(image_path)
-
 
         return render_template(
             "recognize.html",
@@ -475,6 +466,15 @@ def predict():
         probabilities[
             predicted_index
         ] * 100
+    )
+
+
+    # ======================================================
+    # Check Low Confidence
+    # ======================================================
+
+    is_low_confidence = (
+        confidence < LOW_CONFIDENCE_THRESHOLD
     )
 
 
@@ -572,7 +572,11 @@ def predict():
 
         original_filename=original_filename,
 
-        prediction_id=prediction_id
+        prediction_id=prediction_id,
+
+        is_low_confidence=is_low_confidence,
+
+        low_confidence_threshold=LOW_CONFIDENCE_THRESHOLD
 
     )
 
@@ -583,7 +587,6 @@ def predict():
 
 @app.route("/history")
 def history():
-
 
     # ======================================================
     # Get Search Value
@@ -645,9 +648,7 @@ def history():
             )
         """
 
-
         search_value = f"%{search}%"
-
 
         parameters.extend([
 
@@ -667,7 +668,6 @@ def history():
         query += """
             AND predicted_class = ?
         """
-
 
         parameters.append(
             selected_era
@@ -729,7 +729,6 @@ def history():
 def delete_prediction(
     prediction_id
 ):
-
 
     # ======================================================
     # Database Connection
@@ -843,10 +842,8 @@ def about():
 
 if __name__ == "__main__":
 
-
     # Initialize database
     init_database()
-
 
     # Run Flask application
     app.run(

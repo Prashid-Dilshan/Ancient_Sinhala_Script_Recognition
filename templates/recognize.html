@@ -15,7 +15,9 @@
 
 </head>
 
+
 <body>
+
 
 <nav class="navbar">
 
@@ -25,7 +27,9 @@
 
     <div class="nav-links">
 
-        <a href="/">Home</a>
+        <a href="/">
+            Home
+        </a>
 
         <a href="/recognize">
             Recognize
@@ -56,11 +60,17 @@
     </p>
 
 
+    <!-- ======================================================
+         Upload Form
+    ======================================================= -->
+
     <form
         action="/predict"
         method="POST"
         enctype="multipart/form-data"
+        id="recognitionForm"
     >
+
 
         <!-- Upload Area -->
 
@@ -100,7 +110,9 @@
         </div>
 
 
-        <!-- Image Preview -->
+        <!-- ==================================================
+             Image Preview
+        =================================================== -->
 
         <div
             class="preview-container"
@@ -120,24 +132,81 @@
         </div>
 
 
-        <!-- Predict Button -->
+        <!-- ==================================================
+             Predict Button
+        =================================================== -->
 
         <button
             type="submit"
             class="predict-btn"
+            id="predictButton"
         >
+
             Predict Era
+
         </button>
+
+
+        <!-- ==================================================
+             Loading Animation
+        =================================================== -->
+
+        <div
+            class="loading-container"
+            id="loadingContainer"
+        >
+
+            <div class="spinner"></div>
+
+            <h3>
+                Analyzing Image...
+            </h3>
+
+            <p>
+                Please wait while the AI model
+                processes your image.
+            </p>
+
+        </div>
+
 
     </form>
 
 </section>
 
 
+<!-- ==========================================================
+     JavaScript
+========================================================== -->
+
 <script
     src="{{ url_for('static', filename='js/script.js') }}">
 </script>
 
+
 </body>
 
 </html>
+
+
+
+<div
+    class="loading-container"
+    id="loadingContainer"
+>
+    <div class="spinner"></div>
+
+    <h3>
+        Analyzing Image...
+    </h3>
+
+    <p>
+        Please wait while the AI model
+        processes your image.
+    </p>
+</div>
+
+<script
+    src="{{ url_for('static', filename='js/script.js') }}">
+</script>
+

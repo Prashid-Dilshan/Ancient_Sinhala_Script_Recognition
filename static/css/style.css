@@ -1217,3 +1217,613 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   RESULT PAGE
+========================================================== */
+
+.result {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.result h1 {
+    margin-bottom: 8px;
+    color: #2c241c;
+    font-size: 36px;
+}
+
+.result-subtitle {
+    margin-top: 0;
+    margin-bottom: 35px;
+    color: #756b61;
+    font-size: 15px;
+}
+
+
+/* ==========================================================
+   MAIN RESULT CARD
+========================================================== */
+
+.result-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 30px;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 50px;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   RESULT IMAGE
+========================================================== */
+
+.result-image {
+    width: 45%;
+}
+
+.result-image img {
+    width: 100%;
+    max-width: 380px;
+    max-height: 350px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    border: 1px solid #ddd;
+
+    background: #f8f5ef;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+}
+
+.original-filename {
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    color: #756b61;
+
+    word-break: break-word;
+}
+
+.original-filename strong {
+    color: #2c241c;
+}
+
+
+/* ==========================================================
+   RESULT INFORMATION
+========================================================== */
+
+.result-info {
+    flex: 1;
+}
+
+.result-label {
+    margin-bottom: 10px;
+
+    color: #756b61;
+
+    font-size: 15px;
+}
+
+.result-info h2 {
+    margin: 0 0 20px;
+
+    color: #9b5c2b;
+
+    font-size: 30px;
+
+    text-transform: capitalize;
+}
+
+.confidence {
+    font-size: 17px;
+
+    color: #4d443c;
+}
+
+.confidence strong {
+    color: #9b5c2b;
+    font-size: 22px;
+}
+
+
+/* ==========================================================
+   LOW CONFIDENCE WARNING
+========================================================== */
+
+.low-confidence-warning {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto 30px;
+
+    padding: 18px 20px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    background: #fff8e6;
+
+    border: 1px solid #e6c86e;
+
+    border-left: 5px solid #d69e2e;
+
+    border-radius: 10px;
+
+    box-sizing: border-box;
+
+    text-align: left;
+}
+
+.warning-icon {
+    font-size: 28px;
+
+    line-height: 1;
+
+    flex-shrink: 0;
+}
+
+.warning-content {
+    flex: 1;
+}
+
+.warning-content h3 {
+    margin: 0 0 6px;
+
+    color: #8a5a00;
+
+    font-size: 18px;
+}
+
+.warning-content p {
+    margin: 0 0 8px;
+
+    color: #6b5500;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.warning-content span {
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #8a5a00;
+}
+
+
+/* ==========================================================
+   PROBABILITY CARD
+========================================================== */
+
+.probability-card {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto 35px;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+
+    text-align: left;
+}
+
+.probability-card h2 {
+    margin-top: 0;
+
+    margin-bottom: 8px;
+
+    color: #2c241c;
+
+    font-size: 24px;
+}
+
+.probability-description {
+    margin-top: 0;
+
+    margin-bottom: 25px;
+
+    color: #756b61;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   PROBABILITY ROW
+========================================================== */
+
+.probability-row {
+    margin-bottom: 20px;
+}
+
+.probability-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    color: #40372f;
+}
+
+.probability-header span:last-child {
+    font-weight: 600;
+
+    color: #9b5c2b;
+}
+
+
+/* ==========================================================
+   PROGRESS BAR
+========================================================== */
+
+.progress-bar {
+    width: 100%;
+
+    height: 10px;
+
+    background: #e9e3da;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+
+    background: #9b5c2b;
+
+    border-radius: 20px;
+
+    transition: width 0.5s ease;
+}
+
+
+/* ==========================================================
+   ACTION BUTTONS
+========================================================== */
+
+.result-actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+
+/* Main button */
+
+.result-actions .btn {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    background: #9b5c2b;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.result-actions .btn:hover {
+    background: #7f4722;
+
+    transform: translateY(-1px);
+}
+
+
+/* Secondary button */
+
+.secondary-btn {
+    background: #2c241c !important;
+}
+
+.secondary-btn:hover {
+    background: #17120e !important;
+}
+
+
+/* ==========================================================
+   DELETE BUTTON
+========================================================== */
+
+.delete-form {
+    margin: 0;
+}
+
+.delete-btn {
+    padding: 12px 22px;
+
+    background: #ffffff;
+
+    color: #b33a3a;
+
+    border: 1px solid #d8a4a4;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+    background: #b33a3a;
+
+    color: #ffffff;
+
+    border-color: #b33a3a;
+}
+
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+========================================================== */
+
+@media (max-width: 800px) {
+
+    .result {
+        width: 94%;
+
+        margin-top: 35px;
+    }
+
+    .result h1 {
+        font-size: 30px;
+    }
+
+    .result-card {
+        flex-direction: column;
+
+        gap: 25px;
+
+        padding: 22px;
+    }
+
+    .result-image {
+        width: 100%;
+    }
+
+    .result-image img {
+        max-width: 100%;
+    }
+
+    .result-info {
+        width: 100%;
+    }
+
+    .result-info h2 {
+        font-size: 25px;
+    }
+
+    .probability-card {
+        padding: 22px;
+    }
+
+    .low-confidence-warning {
+        padding: 16px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .result h1 {
+        font-size: 26px;
+    }
+
+    .result-subtitle {
+        font-size: 13px;
+    }
+
+    .result-card {
+        padding: 18px;
+    }
+
+    .probability-card {
+        padding: 18px;
+    }
+
+    .result-actions {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .result-actions .btn,
+    .delete-btn {
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+    .low-confidence-warning {
+        gap: 10px;
+    }
+
+    .warning-icon {
+        font-size: 24px;
+    }
+}
+
+
+
+
+/* ==========================================================
+   LOADING ANIMATION
+========================================================== */
+
+.loading-container {
+  display: none;
+
+  width: 100%;
+  max-width: 500px;
+
+  margin: 25px auto;
+
+  padding: 25px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+
+/* Spinner */
+
+.spinner {
+  width: 45px;
+  height: 45px;
+
+  margin: 0 auto 15px;
+
+  border: 5px solid #e9e3da;
+
+  border-top: 5px solid #9b5c2b;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+
+/* Spinner Animation */
+
+@keyframes spin {
+
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+
+}
+
+
+/* Loading Heading */
+
+.loading-container h3 {
+  margin: 0 0 8px;
+
+  color: #2c241c;
+
+  font-size: 19px;
+}
+
+
+/* Loading Text */
+
+.loading-container p {
+  margin: 0;
+
+  color: #756b61;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* Disabled Predict Button */
+
+.btn.loading {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+
+  pointer-events: none;
+}
