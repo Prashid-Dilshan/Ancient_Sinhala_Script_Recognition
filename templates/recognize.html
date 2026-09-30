@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recognize Script</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Ancient Sinhala AI
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">Home</a>
+
+        <a href="/recognize">
+            Recognize
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="recognition">
+
+    <h1>
+        Ancient Sinhala Script Recognition
+    </h1>
+
+    <p>
+        Upload an Ancient Sinhala script image
+        to identify its historical era.
+    </p>
+
+
+    <form
+        action="/predict"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <!-- Upload Area -->
+
+        <div
+            class="upload-box"
+            id="dropArea"
+        >
+
+            <div class="upload-icon">
+                📜
+            </div>
+
+            <h3>
+                Drag & Drop your image here
+            </h3>
+
+            <p>
+                or
+            </p>
+
+            <label
+                for="imageInput"
+                class="browse-btn"
+            >
+                Browse Image
+            </label>
+
+            <input
+                type="file"
+                id="imageInput"
+                name="image"
+                accept="image/*"
+                hidden
+                required
+            >
+
+        </div>
+
+
+        <!-- Image Preview -->
+
+        <div
+            class="preview-container"
+            id="previewContainer"
+        >
+
+            <h3>
+                Image Preview
+            </h3>
+
+            <img
+                id="imagePreview"
+                src=""
+                alt="Image Preview"
+            >
+
+        </div>
+
+
+        <!-- Predict Button -->
+
+        <button
+            type="submit"
+            class="predict-btn"
+        >
+            Predict Era
+        </button>
+
+    </form>
+
+</section>
+
+
+<script
+    src="{{ url_for('static', filename='js/script.js') }}">
+</script>
+
+</body>
+
+</html>

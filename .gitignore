@@ -1,0 +1,30 @@
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment variables
+.env
+
+# SQLite Database
+database/*.db
+
+# Uploaded Images
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

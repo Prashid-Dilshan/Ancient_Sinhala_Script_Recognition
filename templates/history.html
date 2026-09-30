@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction History</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/style.css'
+        ) }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        Ancient Sinhala AI
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/recognize">
+            Recognize
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<section class="history">
+
+    <h1>
+        Prediction History
+    </h1>
+
+
+    <p>
+        Previous Ancient Sinhala Script
+        recognition results
+    </p>
+
+
+    <div class="history-table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Image
+                    </th>
+
+                    <th>
+                        Predicted Era
+                    </th>
+
+                    <th>
+                        Confidence
+                    </th>
+
+                    <th>
+                        Date & Time
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for prediction in predictions %}
+
+                <tr>
+
+                    <td>
+
+                        <img
+                            class="history-image"
+                            src="{{ url_for(
+                                'static',
+                                filename='uploads/' +
+                                prediction['image_name']
+                            ) }}"
+                        >
+
+                    </td>
+
+
+                    <td>
+
+                        {{ prediction['predicted_class'] }}
+
+                    </td>
+
+
+                    <td>
+
+                        {{ "%.2f"|format(
+                            prediction['confidence']
+                        ) }}%
+
+                    </td>
+
+
+                    <td>
+
+                        {{ prediction['created_at'] }}
+
+                    </td>
+
+                </tr>
+
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="4"
+                        class="empty-history"
+                    >
+
+                        No predictions yet.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+</body>
+
+</html>

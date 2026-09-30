@@ -1,0 +1,612 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f1e8;
+  color: #2c241c;
+}
+
+
+/* Navbar */
+
+.navbar {
+  height: 70px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 8%;
+
+  background: #2c241c;
+}
+
+.logo {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+
+/* Hero */
+
+.hero {
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 55px;
+  line-height: 1.15;
+}
+
+.hero h1 span {
+  display: block;
+  color: #9b5c2b;
+}
+
+.hero p {
+  margin-top: 25px;
+
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+
+  margin-top: 30px;
+
+  padding: 14px 30px;
+
+  background: #9b5c2b;
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+}
+
+
+
+
+/* Recognition Page */
+
+.recognition {
+
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 40px;
+}
+
+.recognition h1 {
+
+  font-size: 40px;
+
+  margin-bottom: 15px;
+}
+
+.recognition p {
+
+  font-size: 18px;
+
+  margin-bottom: 35px;
+}
+
+.upload-box {
+
+  width: 500px;
+
+  padding: 50px;
+
+  border: 2px dashed #9b5c2b;
+
+  border-radius: 15px;
+
+  background: white;
+
+  margin-bottom: 25px;
+}
+
+.upload-box input {
+
+  font-size: 16px;
+}
+
+.recognition button {
+
+  padding: 14px 35px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #9b5c2b;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+/* Result Page */
+
+.result {
+
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.result h1 {
+
+  font-size: 42px;
+
+  margin-bottom: 30px;
+}
+
+.result-card {
+
+  width: 500px;
+
+  padding: 45px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+  margin-bottom: 30px;
+}
+
+.result-label {
+
+  font-size: 16px;
+
+  color: #777;
+}
+
+.result-card h2 {
+
+  font-size: 35px;
+
+  color: #9b5c2b;
+
+  margin: 15px 0;
+}
+
+.confidence {
+
+  font-size: 20px;
+}
+
+.confidence strong {
+
+  color: #2c241c;
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   Upload Area
+========================= */
+
+.upload-box {
+
+  width: 550px;
+
+  padding: 50px 30px;
+
+  border: 2px dashed #9b5c2b;
+
+  border-radius: 18px;
+
+  background: white;
+
+  text-align: center;
+
+  transition: 0.3s;
+
+  margin-top: 30px;
+}
+
+
+.upload-box.dragover {
+
+  background: #f1e4d5;
+
+  border-color: #6e3e1e;
+
+  transform: scale(1.02);
+}
+
+
+.upload-icon {
+
+  font-size: 50px;
+
+  margin-bottom: 15px;
+}
+
+
+.upload-box h3 {
+
+  font-size: 20px;
+
+  margin-bottom: 10px;
+}
+
+
+.upload-box p {
+
+  margin: 10px 0;
+
+  color: #777;
+}
+
+
+/* Browse Button */
+
+.browse-btn {
+
+  display: inline-block;
+
+  padding: 12px 25px;
+
+  background: #9b5c2b;
+
+  color: white;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+ Image Preview
+========================= */
+
+.preview-container {
+
+  display: none;
+
+  margin-top: 30px;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+}
+
+
+.preview-container h3 {
+
+  margin-bottom: 15px;
+}
+
+
+#imagePreview {
+
+  max-width: 400px;
+
+  max-height: 300px;
+
+  border-radius: 10px;
+
+  object-fit: contain;
+}
+
+
+/* =========================
+ Predict Button
+========================= */
+
+.predict-btn {
+
+  margin-top: 30px;
+
+  padding: 15px 40px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2c241c;
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+.predict-btn:hover {
+
+  background: #9b5c2b;
+
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   Probability Section
+========================= */
+
+.probability-card {
+
+  width: 600px;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 18px;
+
+  margin-bottom: 30px;
+
+  box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+}
+
+
+.probability-card h2 {
+
+  margin-bottom: 25px;
+
+  text-align: left;
+}
+
+
+.probability-row {
+
+  margin-bottom: 20px;
+}
+
+
+.probability-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+
+  font-size: 15px;
+}
+
+
+.progress-bar {
+
+  width: 100%;
+
+  height: 12px;
+
+  background: #e6e0d8;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.progress {
+
+  height: 100%;
+
+  background: #9b5c2b;
+
+  border-radius: 10px;
+
+  transition: width 0.8s ease;
+}
+
+
+
+.result-image {
+
+  margin-bottom: 25px;
+}
+
+.result-image img {
+
+  width: 300px;
+
+  max-height: 250px;
+
+  object-fit: contain;
+
+  border-radius: 12px;
+
+  border: 1px solid #ddd;
+}
+
+
+
+
+
+/* =========================
+   History Page
+========================= */
+
+.history {
+
+  min-height: calc(100vh - 70px);
+
+  padding: 60px 8%;
+
+}
+
+
+.history h1 {
+
+  font-size: 40px;
+
+  margin-bottom: 10px;
+
+}
+
+
+.history > p {
+
+  color: #777;
+
+  margin-bottom: 35px;
+
+}
+
+
+.history-table-container {
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  background: white;
+
+  border-radius: 15px;
+
+  box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+
+}
+
+
+.history table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+}
+
+
+.history th {
+
+  background: #2c241c;
+
+  color: white;
+
+  padding: 16px;
+
+  text-align: left;
+
+}
+
+
+.history td {
+
+  padding: 15px;
+
+  border-bottom: 1px solid #eee;
+
+}
+
+
+.history tr:hover {
+
+  background: #faf6f1;
+
+}
+
+
+.history-image {
+
+  width: 70px;
+
+  height: 60px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+
+}
+
+
+.empty-history {
+
+  text-align: center;
+
+  padding: 40px !important;
+
+  color: #777;
+
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Recognition Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Ancient Sinhala AI
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/recognize">
+            Recognize
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="result">
+
+    <h1>
+        Recognition Result
+    </h1>
+
+
+    <!-- Main Result -->
+
+    <div class="result-card">
+
+      <div class="result-image">
+  
+          <img
+              src="{{ url_for('static',
+                              filename='uploads/' + image_name) }}"
+              alt="Uploaded Script"
+          >
+  
+      </div>
+  
+      <p class="result-label">
+          Predicted Historical Era
+      </p>
+  
+      <h2>
+          {{ predicted_class }}
+      </h2>
+  
+      <p class="confidence">
+  
+          Confidence:
+  
+          <strong>
+              {{ "%.2f"|format(confidence) }}%
+          </strong>
+  
+      </p>
+  
+  </div>
+
+
+    <!-- Probability Breakdown -->
+
+    <div class="probability-card">
+
+        <h2>
+            Class Probabilities
+        </h2>
+
+
+        {% for item in probability_data %}
+
+        <div class="probability-row">
+
+            <div class="probability-header">
+
+                <span>
+                    {{ item.class_name }}
+                </span>
+
+                <span>
+                    {{ "%.2f"|format(item.probability) }}%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress"
+                    style="width: {{ item.probability }}%"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <a
+        href="/recognize"
+        class="btn"
+    >
+        Try Another Image
+    </a>
+
+
+</section>
+
+
+</body>
+
+</html>
