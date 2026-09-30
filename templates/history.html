@@ -6,10 +6,14 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Prediction History</title>
+    <title>
+        Prediction History
+    </title>
 
     <link
         rel="stylesheet"
@@ -64,10 +68,80 @@
 
 
     <p>
-        Previous Ancient Sinhala Script
-        recognition results
+        Search and manage previous
+        script recognition results.
     </p>
 
+
+
+    <!-- =========================
+         Search & Filter
+    ========================= -->
+
+    <form
+    method="GET"
+    action="/history"
+    class="history-filters"
+>
+
+    <input
+        type="text"
+        name="search"
+        value="{{ search }}"
+        placeholder="Search image or era..."
+    >
+
+
+    <select
+        name="era"
+        onchange="this.form.submit()"
+    >
+
+        <option value="">
+            All Eras
+        </option>
+
+
+        {% for class_name in class_names %}
+
+        <option
+            value="{{ class_name }}"
+            {% if selected_era == class_name %}
+                selected
+            {% endif %}
+        >
+
+            {{ class_name }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+
+    <button
+        type="submit"
+        class="filter-btn"
+    >
+        Search
+    </button>
+
+
+    <a
+        href="/history"
+        class="clear-btn"
+    >
+        Clear
+    </a>
+
+</form>
+
+
+
+    <!-- =========================
+         History Table
+    ========================= -->
 
     <div class="history-table-container">
 
@@ -82,6 +156,10 @@
                     </th>
 
                     <th>
+                        File Name
+                    </th>
+
+                    <th>
                         Predicted Era
                     </th>
 
@@ -93,6 +171,10 @@
                         Date & Time
                     </th>
 
+                    <th>
+                        Action
+                    </th>
+
                 </tr>
 
             </thead>
@@ -100,9 +182,14 @@
 
             <tbody>
 
+
                 {% for prediction in predictions %}
 
+
                 <tr>
+
+
+                    <!-- Image -->
 
                     <td>
 
@@ -113,26 +200,50 @@
                                 filename='uploads/' +
                                 prediction['image_name']
                             ) }}"
+                            alt="Script"
                         >
 
                     </td>
 
 
+                    <!-- Original filename -->
+
                     <td>
 
-                        {{ prediction['predicted_class'] }}
+                        {{ prediction['original_filename'] }}
 
                     </td>
 
 
+                    <!-- Era -->
+
                     <td>
 
-                        {{ "%.2f"|format(
-                            prediction['confidence']
-                        ) }}%
+                        <span class="era-badge">
+
+                            {{ prediction['predicted_class'] }}
+
+                        </span>
 
                     </td>
 
+
+                    <!-- Confidence -->
+
+                    <td>
+
+                        <strong>
+
+                            {{ "%.2f"|format(
+                                prediction['confidence']
+                            ) }}%
+
+                        </strong>
+
+                    </td>
+
+
+                    <!-- Date -->
 
                     <td>
 
@@ -140,31 +251,68 @@
 
                     </td>
 
+
+                    <!-- Delete -->
+
+                    <td>
+
+                        <form
+                            method="POST"
+                            action="{{ url_for(
+                                'delete_prediction',
+                                prediction_id=
+                                prediction['id']
+                            ) }}"
+                            onsubmit="
+                                return confirm(
+                                'Delete this prediction?'
+                                );
+                            "
+                        >
+
+                            <button
+                                type="submit"
+                                class="delete-btn"
+                            >
+
+                                Delete
+
+                            </button>
+
+                        </form>
+
+                    </td>
+
+
                 </tr>
 
 
                 {% else %}
 
+
                 <tr>
 
                     <td
-                        colspan="4"
+                        colspan="6"
                         class="empty-history"
                     >
 
-                        No predictions yet.
+                        No prediction records found.
 
                     </td>
 
                 </tr>
 
+
                 {% endfor %}
+
 
             </tbody>
 
         </table>
 
     </div>
+
 
 </section>
 

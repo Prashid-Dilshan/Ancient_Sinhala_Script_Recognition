@@ -610,3 +610,610 @@ body {
   color: #777;
 
 }
+
+
+
+
+
+
+
+/* =========================
+   Hero Improvements
+========================= */
+
+.hero-badge {
+
+  display: inline-block;
+
+  padding: 7px 15px;
+
+  border-radius: 20px;
+
+  background: #e8d8c7;
+
+  color: #6e3e1e;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 20px;
+}
+
+
+.hero-buttons {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+
+.secondary-btn {
+
+  background: transparent;
+
+  color: #2c241c;
+
+  border: 2px solid #2c241c;
+}
+
+
+/* =========================
+ Statistics
+========================= */
+
+.stats-section {
+
+  padding: 70px 8%;
+
+  text-align: center;
+
+  background: white;
+}
+
+
+.stats-section h2 {
+
+  font-size: 32px;
+
+  margin-bottom: 40px;
+}
+
+
+.stats-grid {
+
+  display: grid;
+
+  grid-template-columns:
+      repeat(4, 1fr);
+
+  gap: 25px;
+}
+
+
+.stat-card {
+
+  padding: 30px;
+
+  border-radius: 15px;
+
+  background: #f5f1e8;
+
+  transition: 0.3s;
+}
+
+
+.stat-card:hover {
+
+  transform: translateY(-5px);
+
+}
+
+
+.stat-card h3 {
+
+  font-size: 38px;
+
+  color: #9b5c2b;
+
+  margin-bottom: 10px;
+}
+
+
+.stat-card p {
+
+  color: #777;
+}
+
+
+/* =========================
+ Historical Eras
+========================= */
+
+.eras-section {
+
+  padding: 80px 8%;
+
+  text-align: center;
+}
+
+
+.eras-section h2 {
+
+  font-size: 32px;
+
+  margin-bottom: 40px;
+}
+
+
+.era-grid {
+
+  display: grid;
+
+  grid-template-columns:
+      repeat(5, 1fr);
+
+  gap: 20px;
+}
+
+
+.era-card {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 15px;
+
+  text-align: left;
+
+  box-shadow:
+      0 8px 25px
+      rgba(0,0,0,0.06);
+
+  transition: 0.3s;
+}
+
+
+.era-card:hover {
+
+  transform: translateY(-5px);
+}
+
+
+.era-card span {
+
+  font-size: 13px;
+
+  color: #9b5c2b;
+
+  font-weight: bold;
+}
+
+
+.era-card h3 {
+
+  margin: 12px 0;
+
+  font-size: 20px;
+}
+
+
+.era-card p {
+
+  color: #777;
+
+  line-height: 1.5;
+
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   Responsive Design
+========================= */
+
+@media (max-width: 900px) {
+
+  .stats-grid {
+
+      grid-template-columns:
+          repeat(2, 1fr);
+
+  }
+
+
+  .era-grid {
+
+      grid-template-columns:
+          repeat(2, 1fr);
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .navbar {
+
+      flex-direction: column;
+
+      height: auto;
+
+      padding: 20px;
+
+      gap: 15px;
+  }
+
+
+  .nav-links {
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+  }
+
+
+  .hero h1 {
+
+      font-size: 38px;
+  }
+
+
+  .hero-buttons {
+
+      flex-direction: column;
+
+      align-items: center;
+  }
+
+
+  .stats-grid {
+
+      grid-template-columns: 1fr;
+
+  }
+
+
+  .era-grid {
+
+      grid-template-columns: 1fr;
+
+  }
+
+
+  .upload-box {
+
+      width: 100%;
+  }
+
+
+  .probability-card {
+
+      width: 100%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   About Page
+========================= */
+
+.about-section {
+
+  padding: 80px 10%;
+
+}
+
+
+.about-content {
+
+  max-width: 1100px;
+
+  margin: auto;
+}
+
+
+.about-content h1 {
+
+  font-size: 45px;
+
+  margin: 20px 0;
+}
+
+
+.about-content > p {
+
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  color: #666;
+
+  max-width: 850px;
+}
+
+
+.about-content h2 {
+
+  font-size: 30px;
+
+  margin-top: 60px;
+
+  margin-bottom: 30px;
+}
+
+
+/* Pipeline */
+
+.pipeline {
+
+  display: grid;
+
+  grid-template-columns:
+      repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+
+.pipeline-step {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 15px;
+
+  box-shadow:
+      0 8px 25px
+      rgba(0,0,0,0.06);
+}
+
+
+.pipeline-step span {
+
+  color: #9b5c2b;
+
+  font-weight: bold;
+
+  font-size: 13px;
+}
+
+
+.pipeline-step h3 {
+
+  margin: 15px 0 10px;
+}
+
+
+.pipeline-step p {
+
+  color: #777;
+
+  line-height: 1.5;
+}
+
+
+/* Model Info */
+
+.model-info {
+
+  display: grid;
+
+  grid-template-columns:
+      repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+
+.model-info > div {
+
+  background: #f5f1e8;
+
+  padding: 25px;
+
+  border-radius: 12px;
+}
+
+
+.model-info strong {
+
+  color: #9b5c2b;
+}
+
+
+.model-info p {
+
+  margin-top: 10px;
+
+  color: #555;
+}
+
+
+
+
+
+/* =========================
+   History Filters
+========================= */
+
+.history-filters {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 30px;
+
+  flex-wrap: wrap;
+}
+
+
+.history-filters input,
+.history-filters select {
+
+  padding: 13px 15px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  background: white;
+
+}
+
+
+.history-filters input {
+
+  width: 300px;
+
+}
+
+
+.filter-btn,
+.clear-btn {
+
+  padding: 13px 22px;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+
+.filter-btn {
+
+  border: none;
+
+  background: #2c241c;
+
+  color: white;
+}
+
+
+.clear-btn {
+
+  background: #eee;
+
+  color: #333;
+}
+
+
+/* =========================
+ Era Badge
+========================= */
+
+.era-badge {
+
+  display: inline-block;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: #f0e2d3;
+
+  color: #6e3e1e;
+
+  font-size: 13px;
+
+  font-weight: bold;
+}
+
+
+/* =========================
+ Delete Button
+========================= */
+
+.delete-btn {
+
+  border: none;
+
+  padding: 8px 14px;
+
+  border-radius: 7px;
+
+  background: #8b2e2e;
+
+  color: white;
+
+  cursor: pointer;
+
+}
+
+
+.delete-btn:hover {
+
+  opacity: 0.85;
+}
+
+
+
+
+
+/* ==========================================================
+   Upload Error Message
+========================================================== */
+
+.upload-error {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+
+  padding: 14px 18px;
+
+  background: #fff1f1;
+  border: 1px solid #e2a1a1;
+  border-left: 5px solid #b33a3a;
+
+  color: #8a2020;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+

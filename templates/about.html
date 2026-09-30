@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        About - Ancient Sinhala AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/style.css'
+        ) }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+    <div class="logo">
+        Ancient Sinhala AI
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/recognize">
+            Recognize
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<section class="about-section">
+
+
+    <div class="about-content">
+
+
+        <div class="hero-badge">
+
+            ABOUT THE PROJECT
+
+        </div>
+
+
+        <h1>
+            Ancient Sinhala Script
+            Recognition System
+        </h1>
+
+
+        <p>
+
+            This application uses a
+            Convolutional Neural Network
+            to classify Ancient Sinhala
+            script images into different
+            historical eras.
+
+        </p>
+
+
+        <h2>
+            How It Works
+        </h2>
+
+
+        <div class="pipeline">
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    Upload
+                </h3>
+
+                <p>
+                    User uploads a
+                    Sinhala script image.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    Preprocess
+                </h3>
+
+                <p>
+                    Image is converted
+                    to grayscale and resized
+                    to 64×64.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    CNN Prediction
+                </h3>
+
+                <p>
+                    The trained CNN
+                    predicts the historical era.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    04
+                </span>
+
+                <h3>
+                    Result
+                </h3>
+
+                <p>
+                    System displays the
+                    predicted era and confidence.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <h2>
+            Model Information
+        </h2>
+
+
+        <div class="model-info">
+
+
+            <div>
+
+                <strong>
+                    Architecture
+                </strong>
+
+                <p>
+                    Convolutional Neural Network
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Input
+                </strong>
+
+                <p>
+                    64 × 64 × 1
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Output
+                </strong>
+
+                <p>
+                    5 Classes
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Framework
+                </strong>
+
+                <p>
+                    TensorFlow / Keras
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</body>
+
+</html>

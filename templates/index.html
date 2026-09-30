@@ -11,12 +11,15 @@
     >
 
     <title>
-        Ancient Sinhala AI
+        Ancient Sinhala Script AI
     </title>
 
     <link
         rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}"
+        href="{{ url_for(
+            'static',
+            filename='css/style.css'
+        ) }}"
     >
 
 </head>
@@ -24,6 +27,10 @@
 
 <body>
 
+
+<!-- =========================
+     Navigation
+========================= -->
 
 <nav class="navbar">
 
@@ -55,9 +62,21 @@
 </nav>
 
 
+
+<!-- =========================
+     Hero Section
+========================= -->
+
 <section class="hero">
 
     <div class="hero-content">
+
+        <div class="hero-badge">
+
+            AI POWERED
+
+        </div>
+
 
         <h1>
 
@@ -72,21 +91,217 @@
 
         <p>
 
-            An AI-powered system for
-            recognizing historical eras
-            of Ancient Sinhala scripts.
+            An AI-powered image classification
+            system designed to identify the
+            historical era of Sinhala scripts.
 
         </p>
 
 
-        <a
-            href="/recognize"
-            class="btn"
-        >
+        <div class="hero-buttons">
 
-            Start Recognition
+            <a
+                href="/recognize"
+                class="btn"
+            >
 
-        </a>
+                Start Recognition
+
+            </a>
+
+
+            <a
+                href="/about"
+                class="btn secondary-btn"
+            >
+
+                Learn More
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     Statistics
+========================= -->
+
+<section class="stats-section">
+
+    <h2>
+        System Overview
+    </h2>
+
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <h3>
+                5
+            </h3>
+
+            <p>
+                Historical Classes
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                64×64
+            </h3>
+
+            <p>
+                Input Image Size
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                CNN
+            </h3>
+
+            <p>
+                Deep Learning Model
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h3>
+                AI
+            </h3>
+
+            <p>
+                Automated Recognition
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     Supported Eras
+========================= -->
+
+<section class="eras-section">
+
+    <h2>
+        Supported Historical Eras
+    </h2>
+
+
+    <div class="era-grid">
+
+
+        <div class="era-card">
+
+            <span>
+                01
+            </span>
+
+            <h3>
+                Early Brahmi
+            </h3>
+
+            <p>
+                Early stage of the
+                Sinhala-Brahmi script tradition.
+            </p>
+
+        </div>
+
+
+        <div class="era-card">
+
+            <span>
+                02
+            </span>
+
+            <h3>
+                Later Brahmi
+            </h3>
+
+            <p>
+                Later development of the
+                Brahmi writing tradition.
+            </p>
+
+        </div>
+
+
+        <div class="era-card">
+
+            <span>
+                03
+            </span>
+
+            <h3>
+                Medieval Sinhala
+            </h3>
+
+            <p>
+                Historical Sinhala script
+                from the medieval period.
+            </p>
+
+        </div>
+
+
+        <div class="era-card">
+
+            <span>
+                04
+            </span>
+
+            <h3>
+                Modern Sinhala
+            </h3>
+
+            <p>
+                Modern form of the
+                Sinhala writing system.
+            </p>
+
+        </div>
+
+
+        <div class="era-card">
+
+            <span>
+                05
+            </span>
+
+            <h3>
+                Transitional Brahmi
+            </h3>
+
+            <p>
+                Transitional development
+                between script forms.
+            </p>
+
+        </div>
+
 
     </div>
 
