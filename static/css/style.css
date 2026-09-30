@@ -1827,3 +1827,465 @@ body {
 
   pointer-events: none;
 }
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   ERA INFORMATION
+========================================================== */
+
+.era-information {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto 30px;
+
+  padding: 25px 30px;
+
+  background: #ffffff;
+
+  border-left: 5px solid #9b5c2b;
+
+  border-radius: 12px;
+
+  box-shadow:
+      0 5px 20px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+
+  text-align: left;
+}
+
+
+.era-information h2 {
+  margin: 0 0 15px;
+
+  color: #2c241c;
+
+  font-size: 22px;
+}
+
+
+.era-information h3 {
+  margin: 0 0 5px;
+
+  color: #9b5c2b;
+
+  font-size: 25px;
+}
+
+
+.era-period {
+  margin: 0 0 15px;
+
+  color: #756b61;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.era-information > p {
+  color: #4d443c;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+.era-characteristics {
+  margin-top: 20px;
+
+  padding: 15px;
+
+  background: #f5f1e8;
+
+  border-radius: 8px;
+}
+
+
+.era-characteristics strong {
+  color: #2c241c;
+
+  font-size: 14px;
+}
+
+
+.era-characteristics p {
+  margin: 6px 0 0;
+
+  color: #756b61;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   PREDICTION DETAILS PAGE
+========================================================== */
+
+.prediction-details {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 50px auto;
+
+    text-align: center;
+}
+
+
+.prediction-details h1 {
+    margin-bottom: 30px;
+
+    color: #2c241c;
+
+    font-size: 34px;
+}
+
+
+/* ==========================================================
+   DETAILS CARD
+========================================================== */
+
+.details-card {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 45px;
+
+    padding: 30px;
+
+    margin-bottom: 30px;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+
+    text-align: left;
+}
+
+
+/* ==========================================================
+   IMAGE
+========================================================== */
+
+.details-image {
+    width: 45%;
+
+    text-align: center;
+}
+
+
+.details-image img {
+    width: 100%;
+
+    max-width: 400px;
+
+    max-height: 350px;
+
+    object-fit: contain;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   INFORMATION
+========================================================== */
+
+.details-info {
+    flex: 1;
+}
+
+
+.details-label {
+    margin: 15px 0 5px;
+
+    color: #756b61;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.details-info h3 {
+    margin: 0;
+
+    color: #2c241c;
+
+    font-size: 16px;
+
+    word-break: break-word;
+}
+
+
+.details-info h2 {
+    margin: 0;
+
+    color: #9b5c2b;
+
+    font-size: 28px;
+
+    text-transform: capitalize;
+}
+
+
+.details-confidence {
+    color: #9b5c2b;
+
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+
+.details-date {
+    margin: 0;
+
+    color: #4d443c;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   ERA INFORMATION
+========================================================== */
+
+.details-era-card {
+    width: 100%;
+
+    margin-bottom: 30px;
+
+    padding: 25px 30px;
+
+    background: #ffffff;
+
+    border-left: 5px solid #9b5c2b;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+
+    text-align: left;
+}
+
+
+.details-era-card h2 {
+    margin: 0 0 15px;
+
+    color: #2c241c;
+
+    font-size: 22px;
+}
+
+
+.details-era-card h3 {
+    margin: 0 0 5px;
+
+    color: #9b5c2b;
+
+    font-size: 25px;
+}
+
+
+.details-era-card > p {
+    color: #4d443c;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.details-era-card .era-period {
+    margin: 0 0 15px;
+
+    color: #756b61;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   CHARACTERISTICS
+========================================================== */
+
+.details-era-card .era-characteristics {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    background: #f5f1e8;
+
+    border-radius: 8px;
+}
+
+
+.details-era-card .era-characteristics strong {
+    color: #2c241c;
+
+    font-size: 14px;
+}
+
+
+.details-era-card .era-characteristics p {
+    margin: 6px 0 0;
+
+    color: #756b61;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   ACTIONS
+========================================================== */
+
+.details-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.details-actions .btn {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    background: #9b5c2b;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.details-actions .btn:hover {
+    background: #7f4722;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 750px) {
+
+    .details-card {
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+
+    .details-image {
+        width: 100%;
+    }
+
+
+    .details-info {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .prediction-details {
+        width: 94%;
+    }
+
+
+    .prediction-details h1 {
+        font-size: 28px;
+    }
+
+
+    .details-card {
+        padding: 20px;
+    }
+
+
+    .details-era-card {
+        padding: 20px;
+    }
+
+
+    .details-actions {
+        flex-direction: column;
+    }
+
+
+    .details-actions .btn {
+        width: 100%;
+
+        box-sizing: border-box;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.details-btn { display: inline-block; padding: 7px 12px; background: #9b5c2b; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 12px; font-weight: 600; } .details-btn:hover { background: #7f4722; }

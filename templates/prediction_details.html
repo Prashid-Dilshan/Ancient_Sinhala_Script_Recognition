@@ -1,0 +1,213 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================================
+     Navigation Bar
+========================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Ancient Sinhala AI
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/recognize">
+            Recognize
+        </a>
+
+        <a href="/history">
+            History
+        </a>
+
+        <a href="/about">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==========================================================
+     Prediction Details
+========================================================== -->
+
+<section class="prediction-details">
+
+    <h1>
+        Prediction Details
+    </h1>
+
+
+    <!-- ======================================================
+         Prediction Card
+    ======================================================= -->
+
+    <div class="details-card">
+
+
+        <!-- Uploaded Image -->
+
+        <div class="details-image">
+
+            <img
+                src="{{ url_for(
+                    'static',
+                    filename='uploads/' + prediction['image_name']
+                ) }}"
+                alt="Uploaded Script"
+            >
+
+        </div>
+
+
+        <!-- Prediction Information -->
+
+        <div class="details-info">
+
+            <p class="details-label">
+                Uploaded File
+            </p>
+
+            <h3>
+                {{ prediction['original_filename'] }}
+            </h3>
+
+
+            <p class="details-label">
+                Predicted Historical Era
+            </p>
+
+            <h2>
+                {{ prediction['predicted_class'] }}
+            </h2>
+
+
+            <p class="details-label">
+                Confidence
+            </p>
+
+            <div class="details-confidence">
+
+                {{ "%.2f"|format(
+                    prediction['confidence']
+                ) }}%
+
+            </div>
+
+
+            <p class="details-label">
+                Prediction Date
+            </p>
+
+            <p class="details-date">
+
+                {{ prediction['created_at'] }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+         Era Information
+    ======================================================= -->
+
+    {% if era_info %}
+
+    <div class="details-era-card">
+
+        <h2>
+            About This Historical Era
+        </h2>
+
+
+        <h3>
+            {{ era_info.title }}
+        </h3>
+
+
+        <p class="era-period">
+            {{ era_info.period }}
+        </p>
+
+
+        <p>
+            {{ era_info.description }}
+        </p>
+
+
+        <div class="era-characteristics">
+
+            <strong>
+                Key Characteristics
+            </strong>
+
+            <p>
+                {{ era_info.characteristics }}
+            </p>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- ======================================================
+         Actions
+    ======================================================= -->
+
+    <div class="details-actions">
+
+        <a
+            href="{{ url_for('history') }}"
+            class="btn"
+        >
+            Back to History
+        </a>
+
+
+        <a
+            href="{{ url_for('recognize') }}"
+            class="btn"
+        >
+            New Recognition
+        </a>
+
+    </div>
+
+
+</section>
+
+
+</body>
+
+</html>

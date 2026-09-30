@@ -90,7 +90,88 @@ CLASS_NAMES = [
 
 
 
+# ==========================================================
+# Era Information
+# ==========================================================
 
+ERA_INFORMATION = {
+
+    "early_brahmi": {
+
+        "title": "Early Brahmi",
+
+        "period": "Early Historical Period",
+
+        "description":
+            "Early Brahmi represents an early stage of writing "
+            "traditions found in the ancient Sri Lankan context.",
+
+        "characteristics":
+            "Simple and early Brahmi-style letter forms."
+    },
+
+
+    "later_brahmi": {
+
+        "title": "Later Brahmi",
+
+        "period": "Later Historical Period",
+
+        "description":
+            "Later Brahmi represents developments in the Brahmi "
+            "script tradition in Sri Lanka.",
+
+        "characteristics":
+            "More developed letter shapes compared with earlier Brahmi."
+    },
+
+
+    "medieval_sinhala": {
+
+        "title": "Medieval Sinhala",
+
+        "period": "Medieval Period",
+
+        "description":
+            "Medieval Sinhala represents a later stage in the "
+            "development of Sinhala writing traditions.",
+
+        "characteristics":
+            "More rounded and developed Sinhala letter forms."
+    },
+
+
+    "modern_sinhala": {
+
+        "title": "Modern Sinhala",
+
+        "period": "Modern Period",
+
+        "description":
+            "Modern Sinhala represents the developed form of the "
+            "Sinhala script used in more recent periods.",
+
+        "characteristics":
+            "Recognizable modern Sinhala letter forms and structures."
+    },
+
+
+    "transitional_brahmi": {
+
+        "title": "Transitional Brahmi",
+
+        "period": "Transitional Period",
+
+        "description":
+            "Transitional Brahmi represents an intermediate stage "
+            "in the development from earlier Brahmi forms toward "
+            "later Sinhala script traditions.",
+
+        "characteristics":
+            "Letter forms showing transitional characteristics."
+    }
+
+}
 
 
 # ==========================================================
@@ -458,6 +539,17 @@ def predict():
     ]
 
 
+
+
+    # ======================================================
+# Get Era Information
+# ======================================================
+
+    era_info = ERA_INFORMATION.get(
+    predicted_class
+    )
+
+
     # ======================================================
     # Get Confidence
     # ======================================================
@@ -576,7 +668,9 @@ def predict():
 
         is_low_confidence=is_low_confidence,
 
-        low_confidence_threshold=LOW_CONFIDENCE_THRESHOLD
+        low_confidence_threshold=LOW_CONFIDENCE_THRESHOLD,
+
+        era_info=era_info
 
     )
 
@@ -821,6 +915,79 @@ def delete_prediction(
 
     return redirect(
         url_for("history")
+    )
+
+
+
+# ==========================================================
+# Prediction Details
+# ==========================================================
+
+@app.route("/prediction/<int:prediction_id>")
+def prediction_details(prediction_id):
+
+    connection = sqlite3.connect(
+        DATABASE
+    )
+
+    connection.row_factory = sqlite3.Row
+
+    cursor = connection.cursor()
+
+
+    # ======================================================
+    # Get Prediction
+    # ======================================================
+
+    cursor.execute("""
+        SELECT *
+        FROM predictions
+        WHERE id = ?
+    """, (
+        prediction_id,
+    ))
+
+
+    prediction = cursor.fetchone()
+
+
+    connection.close()
+
+
+    # ======================================================
+    # Prediction Not Found
+    # ======================================================
+
+    if prediction is None:
+
+        return redirect(
+            url_for("history")
+        )
+
+
+    # ======================================================
+    # Get Era Information
+    # ======================================================
+
+    era_info = ERA_INFORMATION.get(
+        prediction["predicted_class"]
+    )
+
+
+    # ======================================================
+    # Show Details
+    # ======================================================
+
+    return render_template(
+
+        "prediction_details.html",
+
+        prediction=prediction,
+
+        era_info=era_info,
+
+        class_names=CLASS_NAMES
+
     )
 
 
