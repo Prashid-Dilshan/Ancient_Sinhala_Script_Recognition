@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +14,10 @@
         Prediction History
     </title>
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for(
-            'static',
-            filename='css/style.css'
-        ) }}"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Brahmi&family=Noto+Serif+Sinhala:wght@400;600&family=Young+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
@@ -34,32 +30,13 @@
 ========================================================== -->
 
 <nav class="navbar">
-
-    <div class="logo">
-        Ancient Sinhala AI
-    </div>
-
-
+    <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">අ</span>Ancient Sinhala AI</a>
     <div class="nav-links">
-
-        <a href="/">
-            Home
-        </a>
-
-        <a href="/recognize">
-            Recognize
-        </a>
-
-        <a href="/history">
-            History
-        </a>
-
-        <a href="/about">
-            About
-        </a>
-
+        <a href="/"{% if request.path == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="/recognize"{% if request.path.startswith('/recognize') or request.path.startswith('/predict') %} aria-current="page"{% endif %}>Recognize</a>
+        <a href="/history"{% if request.path.startswith('/history') or request.path.startswith('/prediction') %} aria-current="page"{% endif %}>History</a>
+        <a href="/about"{% if request.path.startswith('/about') %} aria-current="page"{% endif %}>About</a>
     </div>
-
 </nav>
 
 
@@ -123,7 +100,7 @@
                 {% endif %}
             >
 
-                {{ class_name }}
+                {{ class_name|replace('_',' ') }}
 
             </option>
 
@@ -248,7 +225,7 @@
 
                         <span class="era-badge">
 
-                            {{ prediction['predicted_class'] }}
+                            {{ prediction['predicted_class']|replace('_',' ') }}
 
                         </span>
 
@@ -393,11 +370,7 @@
 
         <!-- Icon -->
 
-        <div class="delete-modal-icon">
-
-            🗑️
-
-        </div>
+        
 
 
 
@@ -405,7 +378,7 @@
 
         <h2>
 
-            Delete Prediction?
+            Delete this prediction?
 
         </h2>
 
@@ -415,14 +388,14 @@
 
         <p>
 
-            Are you sure you want to delete this prediction?
+            The image and its result will be removed from History.
 
         </p>
 
 
         <span>
 
-            This action cannot be undone.
+            This can't be undone.
 
         </span>
 
@@ -441,7 +414,7 @@
                 onclick="closeDeleteModal()"
             >
 
-                Cancel
+                Keep it
 
             </button>
 
@@ -484,4 +457,3 @@
 </body>
 
 </html>
-

@@ -1,313 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Ancient Sinhala Script AI
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="{{ url_for(
-            'static',
-            filename='css/style.css'
-        ) }}"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Sinhala Script AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Brahmi&family=Noto+Serif+Sinhala:wght@400;600&family=Young+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-
-
 <body>
 
-
-<!-- =========================
-     Navigation
-========================= -->
-
 <nav class="navbar">
-
-    <div class="logo">
-        Ancient Sinhala AI
-    </div>
-
-
+    <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">අ</span>Ancient Sinhala AI</a>
     <div class="nav-links">
-
-        <a href="/">
-            Home
-        </a>
-
-        <a href="/recognize">
-            Recognize
-        </a>
-
-        <a href="/history">
-            History
-        </a>
-
-        <a href="/about">
-            About
-        </a>
-
+        <a href="/" aria-current="page">Home</a>
+        <a href="/recognize">Recognize</a>
+        <a href="/history">History</a>
+        <a href="/about">About</a>
     </div>
-
 </nav>
 
-
-
-<!-- =========================
-     Hero Section
-========================= -->
-
 <section class="hero">
-
     <div class="hero-content">
-
-        <div class="hero-badge">
-
-            AI POWERED
-
-        </div>
-
-
         <h1>
-
             Ancient Sinhala Script
-
-            <span>
-                Era Recognition
-            </span>
-
+            <span>Era Recognition</span>
         </h1>
-
-
         <p>
-
-            An AI-powered image classification
-            system designed to identify the
-            historical era of Sinhala scripts.
-
+            Upload a photo of an inscription and a neural network tells you
+            which period its lettering belongs to.
         </p>
-
-
         <div class="hero-buttons">
-
-            <a
-                href="/recognize"
-                class="btn"
-            >
-
-                Start Recognition
-
-            </a>
-
-
-            <a
-                href="/about"
-                class="btn secondary-btn"
-            >
-
-                Learn More
-
-            </a>
-
+            <a href="/recognize" class="btn">Recognize an inscription</a>
+            <a href="/about" class="btn secondary-btn">How it works</a>
         </div>
-
     </div>
 
+    <div class="hero-slab" aria-hidden="true">
+        <div class="slab-glyphs">
+            <span class="glyph glyph-old">𑀓</span>
+            <span class="glyph-line"></span>
+            <span class="glyph glyph-new">ක</span>
+        </div>
+        <p class="slab-caption">The letter <em>ka</em>, from Brahmi to modern Sinhala</p>
+    </div>
 </section>
-
-
-
-<!-- =========================
-     Statistics
-========================= -->
 
 <section class="stats-section">
-
-    <h2>
-        System Overview
-    </h2>
-
-
-    <div class="stats-grid">
-
-
-        <div class="stat-card">
-
-            <h3>
-                5
-            </h3>
-
-            <p>
-                Historical Classes
-            </p>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <h3>
-                64×64
-            </h3>
-
-            <p>
-                Input Image Size
-            </p>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <h3>
-                CNN
-            </h3>
-
-            <p>
-                Deep Learning Model
-            </p>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <h3>
-                AI
-            </h3>
-
-            <p>
-                Automated Recognition
-            </p>
-
-        </div>
-
-
-    </div>
-
+    <h2>What the model does</h2>
+    <dl class="spec-row">
+        <div><dt>Reads</dt><dd>64×64 grayscale image</dd></div>
+        <div><dt>Model</dt><dd>Convolutional neural network</dd></div>
+        <div><dt>Answers with</dt><dd>One of 5 eras, plus confidence</dd></div>
+    </dl>
 </section>
-
-
-
-<!-- =========================
-     Supported Eras
-========================= -->
 
 <section class="eras-section">
+    <h2>The five eras it knows</h2>
+    <p class="section-note">Listed from oldest to newest.</p>
 
-    <h2>
-        Supported Historical Eras
-    </h2>
-
-
-    <div class="era-grid">
-
-
-        <div class="era-card">
-
-            <span>
-                01
-            </span>
-
-            <h3>
-                Early Brahmi
-            </h3>
-
-            <p>
-                Early stage of the
-                Sinhala-Brahmi script tradition.
-            </p>
-
-        </div>
-
-
-        <div class="era-card">
-
-            <span>
-                02
-            </span>
-
-            <h3>
-                Later Brahmi
-            </h3>
-
-            <p>
-                Later development of the
-                Brahmi writing tradition.
-            </p>
-
-        </div>
-
-
-        <div class="era-card">
-
-            <span>
-                03
-            </span>
-
-            <h3>
-                Medieval Sinhala
-            </h3>
-
-            <p>
-                Historical Sinhala script
-                from the medieval period.
-            </p>
-
-        </div>
-
-
-        <div class="era-card">
-
-            <span>
-                04
-            </span>
-
-            <h3>
-                Modern Sinhala
-            </h3>
-
-            <p>
-                Modern form of the
-                Sinhala writing system.
-            </p>
-
-        </div>
-
-
-        <div class="era-card">
-
-            <span>
-                05
-            </span>
-
-            <h3>
-                Transitional Brahmi
-            </h3>
-
-            <p>
-                Transitional development
-                between script forms.
-            </p>
-
-        </div>
-
-
-    </div>
-
+    <ol class="era-line">
+        <li>
+            <h3>Early Brahmi</h3>
+            <p>The earliest stage of the Sinhala-Brahmi script tradition.</p>
+        </li>
+        <li>
+            <h3>Later Brahmi</h3>
+            <p>Later development of the Brahmi writing tradition.</p>
+        </li>
+        <li>
+            <h3>Transitional Brahmi</h3>
+            <p>The bridge between Brahmi and the later script forms.</p>
+        </li>
+        <li>
+            <h3>Medieval Sinhala</h3>
+            <p>Sinhala script as written in the medieval period.</p>
+        </li>
+        <li>
+            <h3>Modern Sinhala</h3>
+            <p>The Sinhala writing system in use today.</p>
+        </li>
+    </ol>
 </section>
 
-
 </body>
-
 </html>
