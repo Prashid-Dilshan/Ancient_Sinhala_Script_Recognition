@@ -4,15 +4,9 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Prediction History
-    </title>
+    <title>Prediction History</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +24,7 @@
 ========================================================== -->
 
 <nav class="navbar">
-    <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">අ</span>Ancient Sinhala AI</a>
+    <a href="/" class="logo"></span>Ancient Sinhala AI</a>
     <div class="nav-links">
         <a href="/"{% if request.path == '/' %} aria-current="page"{% endif %}>Home</a>
         <a href="/recognize"{% if request.path.startswith('/recognize') or request.path.startswith('/predict') %} aria-current="page"{% endif %}>Recognize</a>
@@ -40,36 +34,20 @@
 </nav>
 
 
-
 <!-- ==========================================================
      Prediction History
 ========================================================== -->
 
 <section class="history">
 
-    <h1>
-        Prediction History
-    </h1>
+    <h1>Prediction History</h1>
+
+    <p>Search and manage previous script recognition results.</p>
 
 
-    <p>
-        Search and manage previous
-        script recognition results.
-    </p>
+    <!-- Search & Filter -->
 
-
-
-    <!-- ======================================================
-         Search & Filter
-    ======================================================= -->
-
-    <form
-        method="GET"
-        action="/history"
-        class="history-filters"
-    >
-
-        <!-- Search -->
+    <form method="GET" action="/history" class="history-filters">
 
         <input
             type="text"
@@ -78,272 +56,139 @@
             placeholder="Search image or era..."
         >
 
+        <select name="era" onchange="this.form.submit()">
 
-        <!-- Era Filter -->
-
-        <select
-            name="era"
-            onchange="this.form.submit()"
-        >
-
-            <option value="">
-                All Eras
-            </option>
-
+            <option value="">All Eras</option>
 
             {% for class_name in class_names %}
-
             <option
                 value="{{ class_name }}"
-                {% if selected_era == class_name %}
-                    selected
-                {% endif %}
+                {% if selected_era == class_name %}selected{% endif %}
             >
-
                 {{ class_name|replace('_',' ') }}
-
             </option>
-
             {% endfor %}
 
         </select>
 
+        <button type="submit" class="filter-btn">Search</button>
 
-        <!-- Search Button -->
-
-        <button
-            type="submit"
-            class="filter-btn"
-        >
-
-            Search
-
-        </button>
-
-
-        <!-- Clear Button -->
-
-        <a
-            href="/history"
-            class="clear-btn"
-        >
-
-            Clear
-
-        </a>
+        <a href="/history" class="clear-btn">Clear</a>
 
     </form>
 
 
+    <!-- Record count -->
 
-    <!-- ======================================================
-         History Table
-    ======================================================= -->
+    <p class="history-meta">
+        Showing <strong>{{ predictions|length }}</strong>
+        {{ 'record' if predictions|length == 1 else 'records' }}
+    </p>
+
+
+    <!-- History Table -->
 
     <div class="history-table-container">
 
         <table>
 
             <thead>
-
                 <tr>
-
-                    <th>
-                        Image
-                    </th>
-
-                    <th>
-                        File Name
-                    </th>
-
-                    <th>
-                        Predicted Era
-                    </th>
-
-                    <th>
-                        Confidence
-                    </th>
-
-                    <th>
-                        Date & Time
-                    </th>
-
-                    <th>
-                        Actions
-                    </th>
-
+                    <th>Image</th>
+                    <th>File Name</th>
+                    <th>Predicted Era</th>
+                    <th>Confidence</th>
+                    <th>Date &amp; Time</th>
+                    <th>Actions</th>
                 </tr>
-
             </thead>
 
-
             <tbody>
-
 
                 {% for prediction in predictions %}
 
                 <tr>
 
-
-                    <!-- ==================================================
-                         Image
-                    ================================================== -->
-
+                    <!-- Image -->
                     <td>
-
                         <img
                             class="history-image"
-                            src="{{ url_for(
-                                'static',
-                                filename='uploads/' +
-                                prediction['image_name']
-                            ) }}"
+                            src="{{ url_for('static', filename='uploads/' + prediction['image_name']) }}"
                             alt="Script"
                         >
-
                     </td>
 
-
-
-                    <!-- ==================================================
-                         Original Filename
-                    ================================================== -->
-
+                    <!-- File name -->
                     <td>
-
-                        {{ prediction['original_filename'] }}
-
-                    </td>
-
-
-
-                    <!-- ==================================================
-                         Predicted Era
-                    ================================================== -->
-
-                    <td>
-
-                        <span class="era-badge">
-
-                            {{ prediction['predicted_class']|replace('_',' ') }}
-
+                        <span class="file-name" title="{{ prediction['original_filename'] }}">
+                            {{ prediction['original_filename'] }}
                         </span>
-
                     </td>
 
-
-
-                    <!-- ==================================================
-                         Confidence
-                    ================================================== -->
-
+                    <!-- Predicted era -->
                     <td>
-
-                        <strong>
-
-                            {{ "%.2f"|format(
-                                prediction['confidence']
-                            ) }}%
-
-                        </strong>
-
+                        <span class="era-badge">
+                            {{ prediction['predicted_class']|replace('_',' ') }}
+                        </span>
                     </td>
 
-
-
-                    <!-- ==================================================
-                         Date & Time
-                    ================================================== -->
-
-                    <td>
-
-                        {{ prediction['created_at'] }}
-
+                    <!-- Confidence -->
+                    <td class="conf-cell">
+                        <strong>{{ "%.2f"|format(prediction['confidence']) }}%</strong>
+                        <div class="conf-bar">
+                            <span style="width: {{ prediction['confidence'] }}%"></span>
+                        </div>
                     </td>
 
+                    <!-- Date & time -->
+                    <td class="date-cell">
+                        {% set created = (prediction['created_at']|string|replace('T', ' ')).split(' ') %}
+                        <span class="date-main">{{ created[0] }}</span>
+                        {% if created|length > 1 %}
+                        <span class="date-time">{{ created[1][:8] }}</span>
+                        {% endif %}
+                    </td>
 
-
-                    <!-- ==================================================
-                         Actions
-                    ================================================== -->
-
+                    <!-- Actions -->
                     <td>
-
                         <div class="history-actions">
 
-
-                            <!-- Delete -->
+                            <a
+                                href="{{ url_for('prediction_details', prediction_id=prediction['id']) }}"
+                                class="details-btn"
+                            >
+                                View Details
+                            </a>
 
                             <form
-                                action="{{ url_for(
-                                    'delete_prediction',
-                                    prediction_id=prediction['id']
-                                ) }}"
+                                action="{{ url_for('delete_prediction', prediction_id=prediction['id']) }}"
                                 method="POST"
                                 class="delete-form"
                                 data-prediction-id="{{ prediction['id'] }}"
                             >
-
                                 <button
                                     type="button"
                                     class="delete-btn"
                                     onclick="openDeleteModal(this)"
                                 >
-
                                     Delete
-
                                 </button>
-
                             </form>
 
-
-
-                            <!-- View Details -->
-
-                            <a
-                                href="{{ url_for(
-                                    'prediction_details',
-                                    prediction_id=prediction['id']
-                                ) }}"
-                                class="details-btn"
-                            >
-
-                                View Details
-
-                            </a>
-
-
                         </div>
-
                     </td>
 
-
                 </tr>
-
 
                 {% else %}
 
-
-                <!-- ======================================================
-                     No Records
-                ======================================================= -->
-
                 <tr>
-
-                    <td
-                        colspan="6"
-                        class="empty-history"
-                    >
-
+                    <td colspan="6" class="empty-history">
                         No prediction records found.
-
                     </td>
-
                 </tr>
 
-
                 {% endfor %}
-
 
             </tbody>
 
@@ -351,108 +196,27 @@
 
     </div>
 
-
 </section>
-
 
 
 <!-- ==========================================================
      Delete Confirmation Modal
 ========================================================== -->
 
-<div
-    class="delete-modal"
-    id="deleteModal"
->
-
-    <div class="delete-modal-content">
-
-
-        <!-- Icon -->
-
-        
-
-
-
-        <!-- Title -->
-
-        <h2>
-
-            Delete this prediction?
-
-        </h2>
-
-
-
-        <!-- Message -->
-
-        <p>
-
-            The image and its result will be removed from History.
-
-        </p>
-
-
-        <span>
-
-            This can't be undone.
-
-        </span>
-
-
-
-        <!-- Modal Buttons -->
-
+<div class="delete-modal" id="deleteModal">
+    <div class="delete-modal-content" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+        <h2 id="deleteTitle">Delete this prediction?</h2>
+        <p>The image and its result will be removed from History.</p>
+        <span>This can't be undone.</span>
         <div class="delete-modal-actions">
-
-
-            <!-- Cancel -->
-
-            <button
-                type="button"
-                class="cancel-delete-btn"
-                onclick="closeDeleteModal()"
-            >
-
-                Keep it
-
-            </button>
-
-
-
-            <!-- Confirm Delete -->
-
-            <button
-                type="button"
-                class="confirm-delete-btn"
-                id="confirmDeleteButton"
-            >
-
-                Delete
-
-            </button>
-
-
+            <button type="button" class="cancel-delete-btn" onclick="closeDeleteModal()">Keep it</button>
+            <button type="button" class="confirm-delete-btn" id="confirmDeleteButton">Delete</button>
         </div>
-
-
     </div>
-
 </div>
 
 
-
-<!-- ==========================================================
-     JavaScript
-========================================================== -->
-
-<script
-    src="{{ url_for(
-        'static',
-        filename='js/script.js'
-    ) }}"
-></script>
-
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 

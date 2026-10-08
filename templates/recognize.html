@@ -4,9 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Recognize Script</title>
 
@@ -22,7 +20,7 @@
 
 
 <nav class="navbar">
-    <a href="/" class="logo"><span class="logo-mark" aria-hidden="true">අ</span>Ancient Sinhala AI</a>
+    <a href="/" class="logo">Ancient Sinhala AI</a>
     <div class="nav-links">
         <a href="/"{% if request.path == '/' %} aria-current="page"{% endif %}>Home</a>
         <a href="/recognize"{% if request.path.startswith('/recognize') or request.path.startswith('/predict') %} aria-current="page"{% endif %}>Recognize</a>
@@ -34,140 +32,139 @@
 
 <section class="recognition">
 
-    <h1>
-        Ancient Sinhala Script Recognition
-    </h1>
+    <h1>Ancient Sinhala Script Recognition</h1>
 
-    <p>
-        Upload an Ancient Sinhala script image
-        to identify its historical era.
-    </p>
+    <p>Upload an Ancient Sinhala script image to identify its historical era.</p>
 
 
-    <!-- ======================================================
-         Upload Form
-    ======================================================= -->
-
-    <form
-        action="/predict"
-        method="POST"
-        enctype="multipart/form-data"
-        id="recognitionForm"
-    >
+    <div class="recognition-layout">
 
 
-        <!-- Upload Area -->
+        <!-- ==================================================
+             Upload Form  (ids are used by script.js)
+        =================================================== -->
 
-        <div
-            class="upload-box"
-            id="dropArea"
+        <form
+            action="/predict"
+            method="POST"
+            enctype="multipart/form-data"
+            id="recognitionForm"
         >
 
-            <div class="upload-icon">
+            <div class="upload-box" id="dropArea">
+
+                <div class="upload-icon"></div>
+
+                <h3>Drop an inscription image here</h3>
+
+                <p>or</p>
+
+                <label for="imageInput" class="browse-btn">Browse Image</label>
+
+                <span class="upload-hint">A clear photo of a single inscription works best.</span>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    name="image"
+                    accept="image/*"
+                    hidden
+                    required
+                >
+
             </div>
 
-            <h3>
-                Drop an inscription image here
-            </h3>
 
-            <p>
-                or
-            </p>
+            <div class="preview-container" id="previewContainer">
 
-            <label
-                for="imageInput"
-                class="browse-btn"
-            >
-                Browse Image
-            </label>
+                <h3>Image Preview</h3>
 
-            <span class="upload-hint">A clear photo of a single inscription works best.</span>
+                <img id="imagePreview" src="" alt="Image Preview">
 
-            <input
-                type="file"
-                id="imageInput"
-                name="image"
-                accept="image/*"
-                hidden
-                required
-            >
-
-        </div>
+            </div>
 
 
-        <!-- ==================================================
-             Image Preview
-        =================================================== -->
+            <button type="submit" class="predict-btn" id="predictButton">
+                Predict Era
+            </button>
 
-        <div
-            class="preview-container"
-            id="previewContainer"
-        >
 
-            <h3>
-                Image Preview
-            </h3>
+            <div class="loading-container" id="loadingContainer">
 
-            <img
-                id="imagePreview"
-                src=""
-                alt="Image Preview"
-            >
+                <div class="spinner"></div>
 
-        </div>
+                <h3>Analyzing Image...</h3>
+
+                <p>Please wait while the AI model processes your image.</p>
+
+            </div>
+
+        </form>
 
 
         <!-- ==================================================
-             Predict Button
+             Side panel
         =================================================== -->
 
-        <button
-            type="submit"
-            class="predict-btn"
-            id="predictButton"
-        >
+        <aside class="recognition-aside">
 
-            Predict Era
+            <div class="aside-card">
 
-        </button>
+                <h2>How it works</h2>
+
+                <ol class="aside-steps">
+
+                    <li>
+                        <span class="step-no">01</span>
+                        <div>
+                            <strong>Upload</strong>
+                            <p>Choose a clear photo of one inscription.</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <span class="step-no">02</span>
+                        <div>
+                            <strong>Analyze</strong>
+                            <p>The image is converted to grayscale, resized to 64×64 and passed to the CNN.</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <span class="step-no">03</span>
+                        <div>
+                            <strong>Result</strong>
+                            <p>You get the predicted era with a confidence score for every class.</p>
+                        </div>
+                    </li>
+
+                </ol>
+
+            </div>
 
 
-        <!-- ==================================================
-             Loading Animation
-        =================================================== -->
+            <div class="aside-card">
 
-        <div
-            class="loading-container"
-            id="loadingContainer"
-        >
+                <h2>For best results</h2>
 
-            <div class="spinner"></div>
+                <ul class="aside-tips">
+                    <li>Photograph a single inscription, not a whole wall.</li>
+                    <li>Use even lighting and avoid strong shadows or glare.</li>
+                    <li>Hold the camera straight on, with the letters filling most of the frame.</li>
+                    <li>Sharp, in-focus images give higher confidence.</li>
+                </ul>
 
-            <h3>
-                Analyzing Image...
-            </h3>
+            </div>
 
-            <p>
-                Please wait while the AI model
-                processes your image.
-            </p>
-
-        </div>
+        </aside>
 
 
-    </form>
+    </div>
 
 </section>
 
 
-<!-- ==========================================================
-     JavaScript
-========================================================== -->
-
-<script
-    src="{{ url_for('static', filename='js/script.js') }}">
-</script>
-
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
